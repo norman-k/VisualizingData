@@ -20,18 +20,18 @@
 }
 
 \pgfplotsset{
+    every non boxed x axis/.append style={x axis line style=-},
+    every non boxed y axis/.append style={y axis line style=-},
     economist/.style={
         xbar,
         xmin=-5,
-        enlarge x limits=,
         nodes near coords,
         nodes near coords align={horizontal},
         every node near coord/.append style={
                 black,
                 fill=white,
                 fill opacity=0.75,
-                text opacity=1,
-                outer sep=\pgflinewidth 
+                text opacity=1
         },
         every axis plot post/.append style={
             point meta=explicit symbolic
@@ -59,7 +59,7 @@
         extra description/.code={
             \fill [red] (-0.05,1.15) rectangle +(-1em,6ex);
             \node [anchor=base west, inner sep=0pt] at (0,1.15) {\large\textbf{#1}};
-            \node [anchor=base west, inner sep=0pt] at (0,1.075) {\small Percent Change};
+            \node [anchor=base west, inner sep=0pt] at (0,1.075) {\small Percent Change by Inflation Deflator};
         },
     },
     economist/.default={},
