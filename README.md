@@ -12,6 +12,10 @@ This repository is intended for non-commercial educational purposes only.
 
 ![Horizontal Bar Graph](https://github.com/norman-k/VisualizingData/blob/master/MMIGrowthBarGraph.png?raw=true)
 
+**Stacked Vertical Bar Graph**
+
+![Stacked Vertical Bar Graph](https://github.com/norman-k/VisualizingData/blob/master/stackedbargraph.png?raw=true)
+
 **Line Graph**
 
 ![Line Graph](https://github.com/norman-k/VisualizingData/blob/master/MMIGrowthLineGraph.png?raw=true)
