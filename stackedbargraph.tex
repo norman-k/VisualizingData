@@ -1,0 +1,150 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+
+\definecolor{backgroundcolor}{RGB}{213,228,235}
+\definecolor{GPNC}{RGB}{1,77,100}
+\definecolor{PD}{RGB}{204,0,0}
+\definecolor{CBI}{RGB}{1,162,217}
+\definecolor{plotcolor4}{RGB}{76,153,0}
+
+\pgfplotscreateplotcyclelist{economist}{%
+    fill=GPNC,draw=GPNC,text=black\\%
+    fill=PD,draw=PD,text=black\\%
+    fill=CBI,draw=CBI,text=black\\%
+    draw=plotcolor4,text=black\\%
+}
+
+\pgfplotsset{
+    economist/.style={
+    every non boxed x axis/.append style={x axis line style=-},
+    every non boxed y axis/.append style={y axis line style=-},
+        /tikz/background rectangle/.style={
+            fill=backgroundcolor
+        },
+        width=1.5\textwidth,
+        tight background,
+        show background rectangle,
+        cycle list name=economist,
+        tickwidth=0pt,
+        grid=major,
+        grid style=white,
+        grid style=gray!50,
+	legend style={draw=none,fill=none,at={(-0.05,1.07)},anchor=west,font=\large},
+        extra description/.code={
+            \fill [red] (-0.05,1.15) rectangle +(-1em,6ex);
+            \node [anchor=base west, inner sep=0pt] at (0,1.15) {\LARGE\textbf{#1}};
+            \node [anchor=base west, inner sep=0pt] at (0,1.095) {\Large Years since 1923};
+        },
+    },
+    economist/.default={},
+    economist new/.style={
+        economist=#1,
+        /tikz/background rectangle/.style={
+            fill=white
+        },
+        grid style=gray!50,
+        every node near coord/.append style={
+            draw=cyan!50!blue,
+            fill=white,
+            inner sep=2pt,
+            outer sep=3pt
+        }
+    },
+    economist new/.default={},
+}
+\centering
+\begin{tikzpicture}
+\begin{axis}[economist=Gross Private Domestic Investment (1923-1941),
+        ybar stacked,
+	axis y line=right,
+	axis x line=bottom,
+	xtick={0,1,...,18},
+	ytick={-3,-2,-1,0,1,...,17},
+	xmin = -1,
+	xmax = 19,
+	ymin = -3,
+	ymax = 18,
+       legend columns=-1
+	]
+\addplot [GPNC,fill=GPNC] coordinates {(0,8.11)(1,8.9)(2,9.76)
+(3,10.5)
+(4,9.99)
+(5,9.52)
+(6,8.91)
+(7,6.35)
+(8,4.07)
+(9,1.95)
+(10,1.49)
+(11,1.91)
+(12,2.43)
+(13,3.25)
+(14,4.38)
+(15,3.92)
+(16,4.88)
+(17,5.69)
+(18,6.86)
+};
+\label{p1}
+\addplot[PD,fill=PD] coordinates {(0,4.58)(1,4.28)(2,4.65)
+(3,5.05)
+(4,4.66)
+(5,4.96)
+(6,5.6)
+(7,4.26)
+(8,2.7)
+(9,1.49)
+(10,1.47)
+(11,2.16)
+(12,2.9)
+(13,3.97)
+(14,4.87)
+(15,3.47)
+(16,3.97)
+(17,5.26)
+(18,6.58)
+};
+\label{p2}
+\addplot [CBI,fill=CBI,
+	nodes near coords,
+        nodes near coords align={vertical},
+        every node near coord/.append style={
+                black,
+                fill=white,
+                fill opacity=0.75,
+                text opacity=1
+        }] coordinates {(0,2.99)(1,-0.94)(2,1.75)
+(3,1.52)(4,0.41)(5,-0.38)(6,1.71)(7,-0.35)(8,-1.15)(9,-2.48)(10,-1.56)
+(11,-0.74)(12,1.07)(13,1.26)(14,2.54)(15,-0.91)(16,0.41)(17,2.18)(18,4.47)
+};
+\label{p3}
+\end{axis}
+
+\node [draw=none,fill=none] at (rel axis cs: 0.40,1.1) {\shortstack[l]{
+\ref{p1} $Gross Private New Construction$ \\
+\ref{p2} $Gross Private Producers Durables$}};
+\node [draw=none,fill=none] at (rel axis cs: 0.75,1.11) {\shortstack[l]{
+\ref{p3} $Change In Business Inventories$}};
+
+\begin{axis}[axis lines=none,
+	width=1.5\textwidth,
+        ybar stacked,
+	axis y line=right,
+	axis x line=center,
+	xtick={0,1,...,18},
+	ytick={-3,-2,-1,0,1,...,17},
+	xmin = -1,
+	xmax = 19,
+	ymin = -3,
+	ymax = 18
+	]
+\addplot [CBI,fill=CBI] coordinates {(1,-0.94)(5,-0.38)(7,-0.35)(8,-1.15)(9,-2.48)(10,-1.56)
+(11,-0.74)(15,-0.91)
+};
+\end{axis}
+\end{tikzpicture}
+\end{document}
