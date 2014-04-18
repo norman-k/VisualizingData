@@ -37,9 +37,12 @@
         grid style=gray!50,
 	legend style={draw=none,fill=none,at={(-0.05,1.07)},anchor=west,font=\large},
         extra description/.code={
-            \fill [red] (-0.05,1.15) rectangle +(-1em,6ex);
-            \node [anchor=base west, inner sep=0pt] at (0,1.15) {\LARGE\textbf{#1}};
-            \node [anchor=base west, inner sep=0pt] at (0,1.095) {\Large In Billion USD };
+	    \node [anchor=base west, inner sep=0pt] at (-0.025,1.13) {\large};
+	    \node [anchor=base west, inner sep=0pt] at (0.98,-0.05) {\large N.K.};
+	    \node [anchor=base west, inner sep=0pt] at (0.05,-0.05) {\large Source: Department of Commerce, Office of Business Economics};
+	    \node [anchor=base west, inner sep=0pt] at (1,-0.06) {\large};
+            \node [anchor=base west, inner sep=0pt] at (0,1.10) {\LARGE\textbf{#1}};
+            \node [anchor=base west, inner sep=0pt] at (0,1.045) {\Large In Billion USD };
         },
     },
     economist/.default={},
@@ -67,10 +70,10 @@
 	axis y line=right,
 	axis x line=bottom,
 	xtick={1937,1938,...,1950},
-	ytick={-4,-3,-2,-1,0,...,55},
+	ytick={-2,-1,0,...,55},
 	xmin = 1936,
 	xmax = 1949,
-	ymin = -4,
+	ymin = -2,
 	ymax = 47,
        legend columns=-1
 	]
@@ -126,11 +129,11 @@
 \label{s3}
 \end{axis}
 
-\node [draw=none,fill=none] at (rel axis cs: 0.40,1.1) {\shortstack[l]{
+\node [draw=none,fill=none] at (rel axis cs: 0.40,1.06) {\shortstack[l]{
 \ref{s1} $Gross Private New Construction$ \\
 \ref{s2} $Gross Private Producers Durables$}};
 
-\node [draw=none,fill=none] at (rel axis cs: 0.75,1.11) {\shortstack[l]{
+\node [draw=none,fill=none] at (rel axis cs: 0.75,1.0685) {\shortstack[l]{
 \ref{s3} $Change In Business Inventories$}};
 
 \begin{axis}[axis lines=none,
@@ -143,10 +146,10 @@
 	axis y line=right,
 	axis x line=center,
 	xtick={1937,1938,...,1950},
-	ytick={-4,-3,-2,-1,0,...,55},
+	ytick={-2,-1,0,...,55},
 	xmin = 1936,
 	xmax = 1949,
-	ymin = -4,
+	ymin = -2,
 	ymax = 47
 	]
 \addplot [CBI,fill=CBI] coordinates {(1938,-0.91)(1943,-0.6)(1944,-1)
