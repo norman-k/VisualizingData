@@ -61,54 +61,56 @@
 \begin{tikzpicture}
 \begin{axis}[economist=Gross Private Domestic Investment (1923-1941),
         ybar stacked,
+	/pgf/number format/.cd,
+        1000 sep={},
 	axis y line=right,
 	axis x line=bottom,
-	xtick={0,1,...,18},
-	ytick={-3,-2,-1,0,1,...,17},
-	xmin = -1,
-	xmax = 19,
+	xtick={1923,1924,...,1941},
+	ytick={-3,-2,-1,0,...,18},
+	xmin = 1922,
+	xmax = 1942,
 	ymin = -3,
 	ymax = 18,
        legend columns=-1
 	]
-\addplot [GPNC,fill=GPNC] coordinates {(0,8.11)(1,8.9)(2,9.76)
-(3,10.5)
-(4,9.99)
-(5,9.52)
-(6,8.91)
-(7,6.35)
-(8,4.07)
-(9,1.95)
-(10,1.49)
-(11,1.91)
-(12,2.43)
-(13,3.25)
-(14,4.38)
-(15,3.92)
-(16,4.88)
-(17,5.69)
-(18,6.86)
+\addplot [GPNC,fill=GPNC] coordinates {(1923,8.11)(1924,8.9)(1925,9.76)
+(1926,10.5)
+(1927,9.99)
+(1928,9.52)
+(1929,8.91)
+(1930,6.35)
+(1931,4.07)
+(1932,1.95)
+(1933,1.49)
+(1934,1.91)
+(1935,2.43)
+(1936,3.25)
+(1937,4.38)
+(1938,3.92)
+(1939,4.88)
+(1940,5.69)
+(1941,6.86)
 };
-\label{p1}
-\addplot[PD,fill=PD] coordinates {(0,4.58)(1,4.28)(2,4.65)
-(3,5.05)
-(4,4.66)
-(5,4.96)
-(6,5.6)
-(7,4.26)
-(8,2.7)
-(9,1.49)
-(10,1.47)
-(11,2.16)
-(12,2.9)
-(13,3.97)
-(14,4.87)
-(15,3.47)
-(16,3.97)
-(17,5.26)
-(18,6.58)
+\label{s1}
+\addplot[PD,fill=PD] coordinates {(1923,4.58)(1924,4.28)(1925,4.65)
+(1926,5.05)
+(1927,4.66)
+(1928,4.96)
+(1929,5.6)
+(1930,4.26)
+(1931,2.7)
+(1932,1.49)
+(1933,1.47)
+(1934,2.16)
+(1935,2.9)
+(1936,3.97)
+(1937,4.87)
+(1938,3.47)
+(1939,3.97)
+(1940,5.26)
+(1941,6.58)
 };
-\label{p2}
+\label{s2}
 \addplot [CBI,fill=CBI,
 	nodes near coords,
         nodes near coords align={vertical},
@@ -117,33 +119,37 @@
                 fill=white,
                 fill opacity=0.75,
                 text opacity=1
-        }] coordinates {(0,2.99)(1,-0.94)(2,1.75)
-(3,1.52)(4,0.41)(5,-0.38)(6,1.71)(7,-0.35)(8,-1.15)(9,-2.48)(10,-1.56)
-(11,-0.74)(12,1.07)(13,1.26)(14,2.54)(15,-0.91)(16,0.41)(17,2.18)(18,4.47)
+        }] coordinates {(1923,2.99)(1924,-0.94)(1925,1.75)
+(1926,1.52)(1927,0.41)(1928,-0.38)(1929,1.71)(1930,-0.35)(1931,-1.15)(1932,-2.48)(1933,-1.56)
+(1934,-0.74)(1935,1.07)(1936,1.26)(1937,2.54)(1938,-0.91)(1939,0.41)(1940,2.18)(1941,4.47)
 };
-\label{p3}
+\label{s3}
 \end{axis}
 
 \node [draw=none,fill=none] at (rel axis cs: 0.40,1.1) {\shortstack[l]{
-\ref{p1} $Gross Private New Construction$ \\
-\ref{p2} $Gross Private Producers Durables$}};
+\ref{s1} $Gross Private New Construction$ \\
+\ref{s2} $Gross Private Producers Durables$}};
+
 \node [draw=none,fill=none] at (rel axis cs: 0.75,1.11) {\shortstack[l]{
-\ref{p3} $Change In Business Inventories$}};
+\ref{s3} $Change In Business Inventories$}};
 
 \begin{axis}[axis lines=none,
+	/pgf/number format/.cd,
+        use comma,
+        1000 sep={},
 	width=1.5\textwidth,
         ybar stacked,
 	axis y line=right,
 	axis x line=center,
-	xtick={0,1,...,18},
-	ytick={-3,-2,-1,0,1,...,17},
-	xmin = -1,
-	xmax = 19,
+	xtick={1923,1924,...,1941},
+	ytick={-3,-2,-1,0,...,18},
+	xmin = 1922,
+	xmax = 1942,
 	ymin = -3,
 	ymax = 18
 	]
-\addplot [CBI,fill=CBI] coordinates {(1,-0.94)(5,-0.38)(7,-0.35)(8,-1.15)(9,-2.48)(10,-1.56)
-(11,-0.74)(15,-0.91)
+\addplot [CBI,fill=CBI] coordinates {(1924,-0.94)(1928,-0.38)(1930,-0.35)(1931,-1.15)(1932,-2.48)(1933,-1.56)
+(1934,-0.74)(1938,-0.91)
 };
 \end{axis}
 \end{tikzpicture}
