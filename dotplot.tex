@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+
+\definecolor{backgroundcolor}{RGB}{213,228,235}
+\definecolor{plotcolor1}{RGB}{1,77,100}
+\definecolor{plotcolor2}{RGB}{204,0,0}
+\definecolor{plotcolor3}{RGB}{1,162,217}
+\definecolor{plotcolor4}{RGB}{76,153,0}
+
+\pgfplotscreateplotcyclelist{economist}{%
+    fill=plotcolor1,draw=plotcolor1,text=black\\%
+    fill=plotcolor2,draw=plotcolor2,text=black\\%
+    fill=plotcolor3,draw=plotcolor3,text=black\\%
+    fill=plotcolor4,draw=plotcolor4,text=black\\%
+}
+
+\pgfplotsset{
+    every non boxed x axis/.append style={x axis line style=-},
+    every non boxed y axis/.append style={y axis line style=-},
+    economist/.style={
+        every axis plot post/.append style={
+            point meta=explicit symbolic
+        },
+        /tikz/background rectangle/.style={
+            fill=backgroundcolor
+        },
+        tight background,
+        show background rectangle,
+        cycle list name=economist,
+        tickwidth=0pt,
+        grid=major,
+        grid style=white,
+        grid style=gray!50,
+        every node near coord/.append style={
+            inner sep=2pt,
+            outer sep=3pt
+        },
+        extra description/.code={
+            \fill [red] (-0.20,1.15) rectangle +(-1em,6ex);
+            \node [anchor=base west, inner sep=0pt] at (-0.15,1.18) {\large Plotting Percentiles\textbf{#1}};
+            \node [anchor=base west, inner sep=0pt] at (-0.15,1.10) {\small 2012};
+        },
+    },
+    economist/.default={},
+    economist new/.style={
+        economist=#1,
+        /tikz/background rectangle/.style={
+            fill=white
+        },
+        grid style=gray!50,
+        every node near coord/.append style={
+            draw=cyan!50!blue,
+            fill=white,
+            inner sep=2pt,
+            outer sep=3pt
+        }
+    },
+    economist new/.default={},
+}
+
+\begin{tikzpicture}
+\begin{axis}[economist,
+    axis y line=left,
+    axis x line=top,
+    ytick={-1,0,1,2},
+    xtick={5,6,...,18},
+    x axis line style={opacity=0},
+    minor grid style={thin,gray!50},
+    %major grid style={thick,white},
+    extra y ticks={-1,0,1,2},
+    extra tick style={major grid style=white},
+    xmin = 5,
+    xmax = 18,
+    ymin = -1.5,
+    ymax = 2.2,
+    yticklabels={France,Germany,England,US},
+    scatter/classes={
+        o={mark=*,fill=white}
+    },
+    scatter,
+    scatter src=explicit symbolic,
+    every axis plot post/.style={mark=*,thick},
+]
+\addplot  [draw=plotcolor1,fill=plotcolor1] table [y expr=-1,meta index=1,header=false] {
+7 o
+};
+\addplot [draw=plotcolor1,fill=plotcolor1] table [y expr=-1,meta index=1,header=false] {
+10 c
+};
+\label{s1}
+\addplot  [draw=plotcolor2,fill=plotcolor2] table [y expr=0,meta index=1,header=false] {
+7 o
+};
+\addplot  [draw=plotcolor2,fill=plotcolor2] table [y expr=0,meta index=1,header=false] {
+10 c
+};
+\label{s2}
+\addplot  [draw=plotcolor3,fill=plotcolor3] table [y expr=1,meta index=1, header=false] {
+8 o
+};
+\addplot  [draw=plotcolor3,fill=plotcolor3] table [y expr=1,meta index=1, header=false] {
+12 c
+};
+\label{s3}
+\addplot  [draw=plotcolor4,fill=plotcolor4] table [y expr=2,meta index=1, header=false] {
+8 o
+};
+\addplot  [draw=plotcolor4,fill=plotcolor4] table [y expr=2,meta index=1, header=false] {
+12 c
+};
+\label{s4}
+
+  \end{axis}
+
+\node [draw=none,fill=none] at (rel axis cs: 0.10,1.125) {\shortstack[l]{
+\ref{s1} $Perc$}};
+\node [draw=none,fill=none] at (rel axis cs: 0.35,1.125) {\shortstack[l]{
+\ref{s2} $Perc$}};
+\node [draw=none,fill=none] at (rel axis cs: 0.60,1.125) {\shortstack[l]{
+\ref{s3} $Perc$}};
+\node [draw=none,fill=none] at (rel axis cs: 0.85,1.125) {\shortstack[l]{
+\ref{s4} $Perc$}};
+
+\end{tikzpicture}
+
+
+\end{document}
