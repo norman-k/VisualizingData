@@ -19,3 +19,9 @@ This repository is intended for non-commercial educational purposes only.
 **Line Graph**
 
 ![Line Graph](https://github.com/norman-k/VisualizingData/blob/master/MMIGrowthLineGraph.png?raw=true)
+
+**Dot Plot**
+
+Work in progress....
+
+![Dot Plot](https://raw.githubusercontent.com/norman-k/VisualizingData/master/dotplot.png)
